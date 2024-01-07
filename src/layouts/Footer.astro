@@ -1,10 +1,12 @@
 ---
+import { Image } from 'astro:assets'
+import localMvImage from '/src/images/mv2.jpg'
 ---
 
 <footer class="footer">
-  <p class="footer-lead">HRK++</p>
+  <button class="footer-lead" id="scroll-top">Scroll Top</button>
   <div class="footer-image">
-    <img src="..//src/images/mv2.jpg" alt="" />
+    <Image src={localMvImage} alt="" />
   </div>
 </footer>
 
@@ -36,6 +38,20 @@
     object-fit: cover;
     width: 100%;
   }
+  button {
+    cursor: pointer;
+  }
   @media (min-width: 768px) {
   }
 </style>
+
+<script>
+  const btn = document.getElementById('scroll-top')
+
+  btn.addEventListener('click', () => {
+    window.scroll({
+      top: 0,
+      behavior: 'smooth',
+    })
+  })
+</script>

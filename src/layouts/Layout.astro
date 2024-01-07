@@ -5,13 +5,9 @@ import { getNavLink, getStaticFilePath, filePath } from '../lib/blog-helpers.ts'
 import '../styles/syntax-coloring.css'
 import GoogleAnalytics from '../components/GoogleAnalytics.astro'
 import SearchModal from '../components/SearchModal.astro'
-import SearchButton from '../components/SearchButton.astro'
 import '../styles/reset.css'
 import Footer from './Footer.astro'
 import Header from './Header.astro'
-import Nav from './Nav.astro'
-import BlogPostsLink from '../components/BlogPostsLink.astro'
-import Mainvisual from './Mainvisual.astro'
 
 export interface Props {
   title: string
@@ -53,9 +49,6 @@ if (database.Icon && database.Icon.Type === 'file') {
     console.log('Invalid DB custom icon URL')
   }
 }
-
-
-
 ---
 
 <!doctype html>
@@ -77,14 +70,17 @@ if (database.Icon && database.Icon.Type === 'file') {
     <meta name="twitter:description" content={siteDescription} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content={ogImage || siteOGImage} />
-    <link rel="icon" href="/src/images/favicon.ico" sizes="any"><!-- 32×32 -->
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
       integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0"
       crossorigin="anonymous"
     />
-    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script> 
+    <script
+      src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"
+    ></script>
   </head>
   <body>
     <GoogleAnalytics trackingId={PUBLIC_GA_TRACKING_ID} />
@@ -103,9 +99,6 @@ if (database.Icon && database.Icon.Type === 'file') {
   </body>
 </html>
 
-<style>
-</style>
-
 <style is:global>
   :root {
     --gap-quarter: 0.25rem;
@@ -123,7 +116,6 @@ if (database.Icon && database.Icon.Type === 'file') {
     --geist-foreground: #000;
     --geist-success: #690;
 
-    
     --paddingInner: 40px;
 
     --headerHeight: 40px;
@@ -171,18 +163,9 @@ if (database.Icon && database.Icon.Type === 'file') {
   body {
     background: var(--bg);
     color: var(--fg);
-    font-family:
-      Helvetica,
-      'Hiragino Sans',
-      'Hiragino Kaku Gothic ProN',
-      'Hiragino Sans GB',
-      メイリオ,
-      Meiryo,
-      'Apple Color Emoji',
-      Arial,
-      sans-serif,
-      'Segoe UI Emoji',
-      'Segoe UI Symbol';
+    font-family: Helvetica, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN',
+      'Hiragino Sans GB', メイリオ, Meiryo, 'Apple Color Emoji', Arial,
+      sans-serif, 'Segoe UI Emoji', 'Segoe UI Symbol';
 
     /*background-image: radial-gradient(#ddd 1px, transparent 1px),
       radial-gradient(#ddd 1px, transparent 1px);*/
@@ -195,10 +178,106 @@ if (database.Icon && database.Icon.Type === 'file') {
 
     -webkit-font-smoothing: antialiased;
     -webkit-text-size-adjust: 100%;
-    letter-spacing: .02em;
+    letter-spacing: 0.02em;
   }
 
-  p {
+  figure {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #999;
+    line-height: 1.8rem;
   }
 
+  a {
+    color: var(--accents-1);
+    text-decoration: none;
+  }
+  a:hover {
+    color: var(--accents-1);
+  }
+
+  mark {
+    padding: var(--gap-quarter);
+    border-radius: var(--radius);
+    background: rgba(247, 212, 255, 0.8);
+  }
+  @media (max-width: 640px) {
+    h1 {
+      font-size: 1.6rem;
+    }
+    ol {
+      color: #222;
+      font-weight: 400;
+      font-size: 0.9rem;
+      line-height: 1.8rem;
+    }
+    p,
+    ul {
+      color: #222;
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.8rem;
+    }
+    ul,
+    ol {
+      list-style-position: inside;
+      margin: 0;
+      padding-inline-start: 1.5rem;
+    }
+    pre {
+      margin: 0;
+      white-space: pre;
+      tab-size: 2;
+    }
+    pre :global(code) {
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    hr {
+      display: block;
+      height: 1px;
+      border: 0;
+      margin: 0.3rem 0;
+      background-color: #333;
+    }
+
+    code {
+      font-size: 0.9rem;
+      background: rgba(135, 131, 120, 0.15);
+      color: #eb5757;
+      padding: 0.25rem;
+      border-radius: var(--radius);
+      font-family: var(--font-mono);
+    }
+
+    table {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+      border-collapse: collapse;
+    }
+
+    table tr {
+      vertical-align: top;
+    }
+
+    table th {
+      font-weight: 600;
+      background-color: #f4f4f4;
+    }
+
+    table td,
+    table th {
+      font-size: 0.9rem;
+      border: 1px solid #e4e4e4;
+      padding: 0.5rem 1rem;
+      text-align: left;
+      line-height: 1.2rem;
+    }
+    table td::after {
+      content: '';
+      display: inline-block;
+      min-height: 0.9rem;
+    }
+  }
 </style>

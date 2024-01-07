@@ -17,20 +17,14 @@ import {
   extractTargetBlocks,
 } from '../../lib/blog-helpers.ts'
 import Layout from '../../layouts/Layout.astro'
-import PostDate from '../../components/PostDate.astro'
 import PostTags from '../../components/PostTags.astro'
-import PostTitle from '../../components/PostTitle.astro'
 import PostBody from '../../components/PostBody.astro'
-import PostRelativeLink from '../../components/PostRelativeLink.astro'
-import BlogPostsLink from '../../components/BlogPostsLink.astro'
-import BlogTagsLink from '../../components/BlogTagsLink.astro'
 import styles from '../../styles/blog.module.css'
-import Main from '../../layouts/Main.astro'
-import PostMainvisual from '../../layouts/PostMainvisual.astro'
 import Inner from '../../layouts/Inner.astro'
-import PostFeaturedImage from '../../components/PostFeaturedImage.astro'
 import PostExcerpt from '../../components/PostExcerpt.astro'
 import { getTagLink } from '../../lib/blog-helpers.ts'
+import { Image } from 'astro:assets';
+import localMvImage from '/src/images/mv2.jpg';
 
 export async function getStaticPaths() {
   const posts = await getAllPosts()
@@ -148,7 +142,7 @@ const { title = '', date = '' } = Astro.props
       </ul>
     </div>
     <div class="mv-image">
-      <img src="..//src/images/mv2.jpg" alt="" />
+      <Image src={localMvImage} alt=""/>
     </div>
   </div>
   <Inner>

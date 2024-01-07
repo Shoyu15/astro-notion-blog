@@ -40,5 +40,13 @@ const listTypes = ['i', '1', 'a']
 <style>
   ol {
     font-size: 1rem;
+    list-style-type: decimal;
+  }
+  li::marker {
+    font-weight: bold;
+    color: #e32222;
+  }
+  ol > li > ol {
+    margin-left: 1em;
   }
 </style>

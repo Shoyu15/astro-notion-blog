@@ -36,8 +36,26 @@ const { block, headings } = Astro.props
 <style>
   ul {
     font-size: 1rem;
+    list-style-type: none;
   }
-  ul li {
-    list-style-type: disc;
+  li {
+    margin-top: 5px;
+    position: relative;
+    padding-left: 12px;
+  }
+  li::before {
+    background-color: #e32222;
+    border-radius: 999px;
+    content: '';
+    display: inline-block;
+    height: 5px;
+    position: absolute;
+    top: 9px;
+    left: 0;
+    width: 5px;
+  }
+  ul > li > ul {
+    margin-top: 5px;
+    margin-left: 1em;
   }
 </style>
