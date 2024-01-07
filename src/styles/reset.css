@@ -38,6 +38,7 @@ ol,
 ul,
 menu {
   list-style: none;
+  list-style-position: inside;
 }
 
 /* For images to not be able to exceed their container */
