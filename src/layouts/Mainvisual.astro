@@ -1,5 +1,6 @@
 ---
-
+import { Image } from 'astro:assets';
+import localMvImage from '/src/images/mv2.jpg';
 ---
 
 <div class="mv">
@@ -8,7 +9,7 @@
     <p class="mv-lead">Web制作の日々の学びの記録</p>
   </div>
   <div class="mv-image">
-    <img src="../../src/images/mv2.jpg" alt="" />
+    <Image src={localMvImage} alt="巣の中の卵を温めている鳥。"/>
   </div>
 </div>
 
